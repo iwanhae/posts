@@ -2,7 +2,7 @@
 title: Project: Minimal
 description: 
 published: 1
-date: 2023-08-13T02:08:55.889Z
+date: 2023-08-13T03:06:51.321Z
 tags: 
 editor: markdown
 dateCreated: 2023-08-13T01:56:45.557Z
@@ -65,3 +65,22 @@ error: instruction requires: fullfp16
 M2 MBA, devcontainer 환경에서 개발을 진행했는데 orbStack 에서 VM 을 돌리면서 NEON Instruction set 지원이 빠진것으로 보임
 
 본래 호스트 환경에서는 컴파일 잘됨
+
+# PoC
+
+```bash
+./kuberian --prompt "Today is a good day to die, and here we are, with a brand new macbook vscode pro and behold!"
+Running on CPU, to run on GPU, build this example with `--features cuda`
+Loaded and encoded 139.136139ms
+[[[-0.0298, -0.2022, -0.2228, ...,  0.1290, -0.1118, -0.0714],
+  [ 0.0190,  0.3009,  0.4286, ..., -0.4848, -0.5861,  0.4919],
+  [-0.1395, -0.1271,  0.1739, ..., -0.0540,  0.0456,  0.1576],
+  ...
+  [-0.3650, -0.1400,  0.0342, ..., -0.2788, -0.0586,  0.1826],
+  [-0.0269,  0.1758,  0.2966, ..., -0.6676, -0.4124,  0.9807],
+  [ 0.0298, -0.2225,  0.1597, ..., -0.0751, -0.2911,  0.2272]]]
+Tensor[[1, 27, 384], f32]
+Took 66.519046ms
+```
+쿼리 하나 임베딩 하는데 대략 65ms 내외 소모. libtorch 대비 15% 정도 빠름.
+바이너리 크기 16MB, 흡족
