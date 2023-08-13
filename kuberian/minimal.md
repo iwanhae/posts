@@ -2,7 +2,7 @@
 title: Project: Minimal
 description: 
 published: 1
-date: 2023-08-13T02:08:55.696Z
+date: 2023-08-13T02:08:55.889Z
 tags: 
 editor: markdown
 dateCreated: 2023-08-13T01:56:45.557Z
