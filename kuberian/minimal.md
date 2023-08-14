@@ -1,8 +1,8 @@
 ---
-title: Project: Minimal
+title: HuggingFace Candle 로 Inference Service 바이너리 크기 줄이기
 description: 
 published: 1
-date: 2023-08-13T03:08:16.581Z
+date: 2023-08-14T14:11:00.155Z
 tags: 
 editor: markdown
 dateCreated: 2023-08-13T01:56:45.557Z
