@@ -2,7 +2,7 @@
 title: Intel MKL 과 함께 HF candle 빠르게 만들기
 description: 
 published: 1
-date: 2023-08-15T09:22:54.209Z
+date: 2023-08-15T09:29:54.606Z
 tags: 
 editor: markdown
 dateCreated: 2023-08-14T14:09:50.613Z
@@ -13,8 +13,8 @@ dateCreated: 2023-08-14T14:09:50.613Z
 - 콜드부트 타임이 기존 30초 에서 2초로 확 줄었다.
 - 하지만 연산속도는 의외로 느린것으로 판별되었다.
   - BERT, 150 토큰으로 고정시
-    - libtorch > 20ms
-    - candle > 150ms
+    - libtorch <= 20ms
+    - candle <= 150ms
     (싱글코어 기준)
 - 좀 더 알아본 결과 libtorch 는 온갖 BLAS 를 써가면서 최적화를 해뒀고
 - candle 은 별도의 최적화는 Feature 를 통해서 활성화가 가능하게 해두었다.
@@ -88,6 +88,20 @@ RUN apt install -y intel-oneapi-mkl-devel
 RUN apt install -y libomp-dev
 ```
 
-# 후기
+# 후기 - 1
 
-총 컨테이너 이미지 크기는 200MB 안쪽 유지중 distroless 를 사용하면 여기서 80MB 정도는 감량 가능하지만 일단 당분간은 방치.
+- 총 컨테이너 이미지 크기는 200MB 안쪽 유지중 
+- distroless 를 사용하면 여기서 80MB 정도는 감량 가능하지만 일단 당분간은 방치.
+- 속도는 약간 논란거리임
+  - libtorch <= 20ms
+  - candle <=150ms
+  - candle `w/ intel-mkl on Ryzen 5600` <= 15ms
+  - candle `w/ intel-mkl on CloudRun` <= 60ms
+- 두배정도 빨라지긴 했지만 정작 중요한 CloudRun 환경에서는 libtorch 보다 느리다. 
+- Single Core 환경에서 seq 모델이 아니라 iomp 를 사용한게 이유 같은데... 천천히 생각해봐야할듯...
+
+# 후기 - 2 
+- 현재 인스턴스당 RPS 는 12 수준. 
+- ReadinessProbe 실패하면 알아서 2초 안쪽으로 스케일아웃
+- 비용의 문제는 있을지언정 급격하는 트래픽 변화에 쉽게 대응한 구조를 만든듯 함
+- 그래도 여전히 람다보다는 10배정도 싸다.
