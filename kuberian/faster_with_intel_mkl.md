@@ -2,7 +2,7 @@
 title: Intel MKL 과 함께 HF candle 빠르게 만들기
 description: 
 published: 1
-date: 2023-08-15T09:21:31.779Z
+date: 2023-08-15T09:22:54.209Z
 tags: 
 editor: markdown
 dateCreated: 2023-08-14T14:09:50.613Z
@@ -87,3 +87,7 @@ RUN apt install -y intel-oneapi-mkl-devel
 # for runtime environment
 RUN apt install -y libomp-dev
 ```
+
+# 후기
+
+총 컨테이너 이미지 크기는 200MB 안쪽 유지중 distroless 를 사용하면 여기서 80MB 정도는 감량 가능하지만 일단 당분간은 방치.
