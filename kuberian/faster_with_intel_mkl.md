@@ -2,7 +2,7 @@
 title: Intel MKL 과 함께 HF candle 빠르게 만들기
 description: 
 published: 1
-date: 2023-08-15T09:29:54.606Z
+date: 2023-08-15T09:35:55.250Z
 tags: 
 editor: markdown
 dateCreated: 2023-08-14T14:09:50.613Z
@@ -105,3 +105,4 @@ RUN apt install -y libomp-dev
 - ReadinessProbe 실패하면 알아서 2초 안쪽으로 스케일아웃
 - 비용의 문제는 있을지언정 급격하는 트래픽 변화에 쉽게 대응한 구조를 만든듯 함
 - 그래도 여전히 람다보다는 10배정도 싸다.
+![kuberian_intel_mkl_hpa.png](/kuberian_intel_mkl_hpa.png)
