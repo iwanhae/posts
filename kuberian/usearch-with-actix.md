@@ -2,7 +2,7 @@
 title: usearch with actix
 description: 
 published: 1
-date: 2023-08-29T11:31:07.630Z
+date: 2023-08-29T11:33:52.779Z
 tags: 
 editor: markdown
 dateCreated: 2023-08-29T11:31:07.630Z
@@ -22,8 +22,16 @@ dateCreated: 2023-08-29T11:31:07.630Z
 
 - API (C ABI) 가 thread safe 하게 설계되어있지 않음
 - Rust 는 thread safe 하지 않으면 컴파일단계에서 거부함 ㅡ,ㅡ
+- 당연하게도 actix web 은 들어온 http 요청을 멀티스레드로 처리함
+
+- 어떻게 actix web 으로 들어온 요청을 usearch 로 처리할 수 있을까?
 
 ## 삽질
 
-### 1. 멀티스레드로 만들기
+### 1. 멀티스레드로 만들기 -> ignore
+
+### 2. 싱글스레드를 보장하기 mutex -> fail
+
+### 3. 싱글스레드를 보장하기 Actor model -> good
+
 
