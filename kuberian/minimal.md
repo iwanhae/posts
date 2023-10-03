@@ -2,7 +2,7 @@
 title: HuggingFace Candle 로 Inference Service 바이너리 크기 줄이기
 description: 
 published: 1
-date: 2023-08-14T14:11:00.155Z
+date: 2023-10-03T13:52:51.812Z
 tags: 
 editor: markdown
 dateCreated: 2023-08-13T01:56:45.557Z
@@ -83,4 +83,4 @@ Tensor[[1, 27, 384], f32]
 Took 66.519046ms
 ```
 쿼리 하나 임베딩 하는데 대략 65ms 내외 소모. libtorch 대비 15% 정도 빠름.
-바이너리 크기 16MB, 흡족
+바이너리 크기 16MB, 흡족 
